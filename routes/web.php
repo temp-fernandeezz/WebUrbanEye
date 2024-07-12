@@ -2,6 +2,7 @@
 
 use App\Filament\Resources\ApprovedReportResource;
 use App\Filament\Resources\RejectedReportResource;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LocationSearch;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -23,9 +24,7 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-Route::get('/about', function () {
-    return view('pages.about');
-})->name('about');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Route::get('/location', function () {
     return view('pages.location');

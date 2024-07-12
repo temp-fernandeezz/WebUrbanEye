@@ -23,7 +23,6 @@
                                             <span class="text-red-500">Rejeitado</span>
                                         @endif
                                     </span>
-
                                     <span>
                                         <svg class="w-6 h-6" fill="#000000" viewBox="0 0 24 24"
                                             xmlns="http://www.w3.org/2000/svg" stroke="#000000">
@@ -55,12 +54,16 @@
                                     <p><strong>Status:</strong>
                                         @if ($report->status === 'pending')
                                             <span class="text-yellow-500">Pendente</span>
+                                            <p class="text-yellow-600 mt-2">Ainda estamos analisando sua reclamação, pedimos que aguarde.</p>
                                         @elseif ($report->status === 'approved')
                                             <span class="text-green-500">Aprovado</span>
+                                            <p class="text-green-600 mt-2">Sua reclamação foi aprovada, logo sua reclamação aparecerá no mapa.</p>
                                         @else
                                             <span class="text-red-500">Rejeitado</span>
+                                            <p class="text-red-600 mt-2">Infelizmente não conseguimos aceitar sua reclamação, por favor, verifique se sua imagem está nítida e se o endereço coincide com a foto enviada.</p>
                                         @endif
                                     </p>
+                                    
                                     @if ($report->image_path)
                                         <p><strong>Imagem:</strong> <a
                                                 href="{{ Storage::url('public/images/' . $report->image_path) }}"

@@ -18,6 +18,8 @@ class ReportResource extends Resource
 {
     protected static ?string $model = Report::class;
 
+    protected static ?string $navigationLabel = 'Reclamações';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -32,8 +34,7 @@ class ReportResource extends Resource
                     ->required(),
                 Forms\Components\Textarea::make('description')
                     ->required(),
-                Forms\Components\TextInput::make('location')
-
+                Forms\Components\TextInput::make('address')
                     ->required(),
                 Forms\Components\Select::make('status')
                     ->options([
@@ -56,7 +57,7 @@ class ReportResource extends Resource
                 Tables\Columns\TextColumn::make('description')
                     ->label('Descrição')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('location')
+                Tables\Columns\TextColumn::make('address')
                     ->label('Localização')
                     ->searchable(),
                 Tables\Columns\SelectColumn::make('status')
@@ -71,13 +72,11 @@ class ReportResource extends Resource
                 //
             ])
             ->actions([
-
-
                 Tables\Actions\Action::make('approve')
                     ->label('Aprovar')
                     ->action(function (Report $record) {
                         // Obter o endereço a partir do CEP
-                        $address = $record->address;  // Supondo que você tenha um campo `address` com o CEP
+                        $address = $record->address;
             
                         if ($address) {
                             // Obter a latitude e longitude do endereço
@@ -135,7 +134,7 @@ class ReportResource extends Resource
         return [
             'index' => Pages\ListReports::route('/'),
             'create' => Pages\CreateReport::route('/create'),
-            'edit' => Pages\EditReport::route('/{record}/edit'),
+            'edit' => Pages\EditReport::route('/{record}/'),
         ];
     }
 }

@@ -61,14 +61,12 @@ class ReportController extends Controller
         return view('pages.listReport', compact('reports'));
     }
     public function getApprovedLocations()
-{
-    $reports = Report::where('status', 'approved')->get(['latitude', 'longitude', 'description']);
-    
-    // Adicione logs para verificar os dados
-    \Illuminate\Support\Facades\Log::info('Approved locations: ', $reports->toArray());
-    
-    return response()->json($reports);
-}
+    {
+        $reports = Report::where('status', 'approved')->get(['latitude', 'longitude', 'description']);
 
+        // Adicione logs para verificar os dados
+        \Illuminate\Support\Facades\Log::info('Approved locations: ', $reports->toArray());
 
+        return response()->json($reports);
+    }
 }
