@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -32,6 +33,7 @@ class ReportResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->required(),
                 Forms\Components\TextInput::make('location')
+
                     ->required(),
                 Forms\Components\Select::make('status')
                     ->options([
@@ -69,11 +71,44 @@ class ReportResource extends Resource
                 //
             ])
             ->actions([
+
+
                 Tables\Actions\Action::make('approve')
                     ->label('Aprovar')
-                    ->action(fn(Report $record) => $record->update(['status' => 'approved']))
+                    ->action(function (Report $record) {
+                        // Obter o endereço a partir do CEP
+                        $address = $record->address;  // Supondo que você tenha um campo `address` com o CEP
+            
+                        if ($address) {
+                            // Obter a latitude e longitude do endereço
+                            $response = Http::get('https://maps.googleapis.com/maps/api/geocode/json', [
+                                'address' => $address,
+                                'key' => env('GOOGLE_MAPS_API_KEY'), // Adicione sua chave da API do Google Maps aqui
+                            ]);
+
+                            $data = $response->json();
+
+                            if ($data['status'] === 'OK') {
+                                $location = $data['results'][0]['geometry']['location'];
+                                $latitude = $location['lat'];
+                                $longitude = $location['lng'];
+
+                                $record->update([
+                                    'status' => 'approved',
+                                    'latitude' => $latitude,
+                                    'longitude' => $longitude,
+                                ]);
+                            } else {
+                                throw new \Exception('Erro ao obter coordenadas: ' . $data['status']);
+                            }
+                        } else {
+                            throw new \Exception('Endereço não disponível para geocodificação');
+                        }
+                    })
                     ->requiresConfirmation()
                     ->color('success'),
+
+
                 Tables\Actions\Action::make('reject')
                     ->label('Recusar')
                     ->action(fn(Report $record) => $record->update(['status' => 'rejected']))
@@ -87,10 +122,11 @@ class ReportResource extends Resource
             ]);
     }
 
+
     public static function getRelations(): array
     {
         return [
-            
+
         ];
     }
 

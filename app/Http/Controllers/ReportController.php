@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Log;
 
 class ReportController extends Controller
 {
@@ -18,7 +19,7 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => '',
             'type' => 'required|string|in:flood,litter',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -53,11 +54,20 @@ class ReportController extends Controller
     }
 
     public function list()
-{
-    $userId = auth()->user()->id;
-    $reports = Report::where('user_id', $userId)->get();
+    {
+        $userId = auth()->user()->id;
+        $reports = Report::where('user_id', $userId)->get();
 
-    return view('pages.listReport', compact('reports'));
+        return view('pages.listReport', compact('reports'));
+    }
+    public function getApprovedLocations()
+{
+    $reports = Report::where('status', 'approved')->get(['latitude', 'longitude', 'description']);
+    
+    // Adicione logs para verificar os dados
+    \Illuminate\Support\Facades\Log::info('Approved locations: ', $reports->toArray());
+    
+    return response()->json($reports);
 }
 
 

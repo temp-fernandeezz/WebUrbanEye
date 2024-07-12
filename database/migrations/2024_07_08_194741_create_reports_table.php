@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->text('description');
+            $table->string('status')->default('pending');
             $table->string('address');
             $table->string('city');
             $table->string('country');

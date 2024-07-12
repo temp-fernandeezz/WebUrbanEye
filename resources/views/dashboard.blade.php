@@ -19,6 +19,7 @@
 
                     <form action="{{ route('reports.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                         <div class="flex flex-wrap">
                             <div class="w-full lg:w-12/12 px-4">
                                 <div class="relative w-full mb-3">
@@ -99,7 +100,6 @@
                                         <option value="" disabled selected>Escolha um tipo</option>
                                         <option value="flood">Alagamento</option>
                                         <option value="litter">Descarte Irregular de Lixo</option>
-                                        <!-- Adicione mais opções se necessário -->
                                     </select>
                                     @error('type')
                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

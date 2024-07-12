@@ -9,13 +9,6 @@ class Report extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'address',
-        'city',
-        'country',
-        'postal_code',
-        'image_path',
-        'description',
-    ];
+    protected $fillable = ['type', 'description', 'location', 'status', 'latitude', 'longitude'];
     
 }

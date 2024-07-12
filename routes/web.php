@@ -1,5 +1,8 @@
 <?php
 
+use App\Filament\Resources\ApprovedReportResource;
+use App\Filament\Resources\RejectedReportResource;
+use App\Http\Controllers\LocationSearch;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
@@ -48,5 +51,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard/create', [ReportController::class, 'index'])->name('reports.create');
 Route::post('/dashboard', [ReportController::class, 'store'])->name('reports.store');
 Route::get('/dashboard/reclamacoes', [ReportController::class, 'show'])->name('reports.show');
+
+Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
+Route::get('/search-location', [LocationSearch::class, 'search'])->name('search.location');
 
 require __DIR__.'/auth.php';
