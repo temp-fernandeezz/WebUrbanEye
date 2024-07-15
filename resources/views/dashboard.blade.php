@@ -22,16 +22,16 @@
                             @csrf
                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                             <div class="flex flex-wrap">
-                                <div class="w-full lg:w-12/12 px-4">
+                                <div class="w-full lg:w-4/12 px-4">
                                     <div class="relative w-full mb-3">
                                         <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                            for="address">
-                                            Endereço
+                                            for="postal_code">
+                                            CEP (Código Postal)
                                         </label>
-                                        <input type="text" id="address" name="address"
+                                        <input type="text" id="postal_code" name="postal_code"
                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                            value="{{ old('address') }}">
-                                        @error('address')
+                                            value="{{ old('postal_code') }}">
+                                        @error('postal_code')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -64,16 +64,17 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="w-full lg:w-4/12 px-4">
+
+                                <div class="w-full lg:w-12/12 px-4">
                                     <div class="relative w-full mb-3">
                                         <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                            for="postal_code">
-                                            CEP (Código Postal)
+                                            for="address">
+                                            Endereço
                                         </label>
-                                        <input type="text" id="postal_code" name="postal_code"
+                                        <input type="text" id="address" name="address"
                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                            value="{{ old('postal_code') }}">
-                                        @error('postal_code')
+                                            value="{{ old('address') }}">
+                                        @error('address')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -101,7 +102,7 @@
                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                             <option value="" disabled selected>Escolha um tipo</option>
                                             <option value="flood">Alagamento</option>
-                                            <option value="litter">Descarte Irregular de Lixo</option>
+                                            <option value="illegal_dump">Descarte Irregular de Lixo</option>
                                         </select>
                                         @error('type')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -127,9 +128,38 @@
                                 class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600 focus:outline-none focus:ring w-full mt-4">Enviar
                                 Denúncia</button>
                         </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const postalCodeInput = document.getElementById('postal_code');
+
+            postalCodeInput.addEventListener('blur', function() {
+                const postalCode = postalCodeInput.value.replace(/\D/g, '');
+
+                if (postalCode.length === 8) {
+                    fetch(`https://viacep.com.br/ws/${postalCode}/json/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.erro) {
+                                alert('CEP não encontrado.');
+                                return;
+                            }
+
+                            document.getElementById('address').value = data.logradouro;
+                            document.getElementById('city').value = data.localidade;
+                            document.getElementById('country').value = data.uf;
+                        })
+                        .catch(error => {
+                            console.error('Erro ao buscar o CEP:', error);
+                        });
+                }
+            });
+        });
+    </script>
 </x-app-layout>

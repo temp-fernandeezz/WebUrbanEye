@@ -54,4 +54,8 @@ Route::get('/dashboard/reclamacoes', [ReportController::class, 'show'])->name('r
 Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
 Route::get('/search-location', [LocationSearch::class, 'search'])->name('search.location');
 
+// Route::get('/weather', function () {
+//     return view('pages.weather');
+// })->name('weather');
+
 require __DIR__.'/auth.php';

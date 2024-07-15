@@ -11,4 +11,22 @@ class Report extends Model
 
     protected $fillable = ['type', 'description', 'location', 'status', 'latitude', 'longitude'];
     
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getLocationAttribute()
+    {
+        return [
+            'lat' => $this->latitude,
+            'lng' => $this->longitude,
+        ];
+    }
+
+    public function setLocationAttribute($value)
+    {
+        $this->attributes['latitude'] = $value['lat'];
+        $this->attributes['longitude'] = $value['lng'];
+    }
 }
