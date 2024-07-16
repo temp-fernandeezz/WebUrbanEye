@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->text('content');
             $table->string('github_link')->nullable();
             $table->string('linkedin_link')->nullable();
-            $table->string('representative_image')->nullable(); // Novo campo para a imagem
+            $table->string('representative_image')->nullable(); 
             $table->timestamps();
         });
     }

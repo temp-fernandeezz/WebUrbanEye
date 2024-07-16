@@ -36,12 +36,10 @@
                     </div>
                     <div>
                         <p class="text-white text-lg">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Com funcionalidades que incluem descrições, fotos e a localização exata, nosso objetivo é
+                            facilitar a comunicação de problemas urbanos e colaborar para um ambiente mais limpo e
+                            seguro. Através de um painel administrativo, as denúncias são analisadas cuidadosamente,
+                            sendo aprovadas ou rejeitadas conforme a necessidade.
                         </p>
                     </div>
                 </div>
@@ -54,12 +52,10 @@
                     </div>
                     <div>
                         <p class="text-white text-lg">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Nossa missão é transformar o modo como as pessoas se relacionam com suas cidades, fornecendo
+                            uma plataforma eficiente para a denúncia de problemas urbanos como alagamentos e descarte
+                            irregular de lixo. Acreditamos que a participação ativa dos cidadãos é essencial para a
+                            construção de comunidades mais limpas e seguras.
                         </p>
                     </div>
                 </div>
@@ -122,22 +118,23 @@
         </div>
     </section>
 
-    <section class="w-auto h-96 bg-repeat-round bg-cover relative" style="background-image: url({{ Vite::asset('resources/images/bg-news.jpeg') }});">
-            <div class="w-full h-96 absolute z-10 bg-black opacity-60 flex items-center justify-center">
-                <div class="w-full max-w-screen-lg content-center text-center">
-                    <h1 class="text-white text-5xl mb-8">
-                       Mantenha-se sempre informado com o nosso <i>blog</i>.
-                    </h1>
-                    <div class="flex justify-center gap-4 pt-6">
-                        <a href="{{ route('blog') }}">
-                            <button
-                                class="bg-transparent text-white py-2 px-6 border-2 border-white hover:bg-white hover:text-black transition">
-                               Blog
-                            </button>
-                        </a>
-    
-                    </div>
+    <section class="w-auto h-96 bg-repeat-round bg-cover relative"
+        style="background-image: url({{ Vite::asset('resources/images/bg-news.jpeg') }});">
+        <div class="w-full h-96 absolute z-10 bg-black opacity-60 flex items-center justify-center">
+            <div class="w-full max-w-screen-lg content-center text-center">
+                <h1 class="text-white text-5xl mb-8">
+                    Mantenha-se sempre informado com o nosso <i>blog</i>.
+                </h1>
+                <div class="flex justify-center gap-4 pt-6">
+                    <a href="{{ route('blog') }}">
+                        <button
+                            class="bg-transparent text-white py-2 px-6 border-2 border-white hover:bg-white hover:text-black transition">
+                            Blog
+                        </button>
+                    </a>
+
                 </div>
             </div>
+        </div>
     </section>
 </x-base-layout>

@@ -42,7 +42,7 @@
                             <div class="bg-gray-300 rounded-md p-4">
                                 @if ($item->representative_image)
                                     <img class="object-fill rounded-md w-72"
-                                        src="{{ asset('storage/' . $item->representative_image) }}" alt="Representante">
+                                        src="{{ asset($item->representative_image) }}" alt="Representante">
                                 @endif
                                 <h1 class="text-2xl font-bold text-musgo mt-4">{{ $item->title }}</h1>
                                 <div class="my-2">
