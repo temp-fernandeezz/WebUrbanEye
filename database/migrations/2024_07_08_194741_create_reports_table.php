@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('status')->default('pending');
             $table->string('address');
             $table->string('city');
-            $table->string('country');
             $table->string('postal_code');
             $table->string('image_path')->nullable();
             $table->timestamps();

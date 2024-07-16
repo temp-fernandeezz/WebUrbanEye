@@ -51,5 +51,133 @@ class DatabaseSeeder extends Seeder
             'linkedin_link' => 'https://linkedin.com/in/pessoa4https://www.linkedin.com/in/nycolas-rafael-neres/',
             'representative_image' => 'https://avatars.githubusercontent.com/u/142312472?v=4',
         ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'Av. Brasil',
+            'city' => 'São Paulo',
+            'postal_code' => '08530-300',
+            'image_path' => 'none',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'Av. Brasil',
+            'city' => 'São Paulo',
+            'postal_code' => '08530-300',
+            'image_path' => 'none',
+            'latitude' => '-23.54107',
+            'longitude' => '-46.36841',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'R. Ver. Diomar Novaes',
+            'city' => 'São Paulo',
+            'postal_code' => '08500-015',
+            'image_path' => 'none',
+            'latitude' => '-23.54028',
+            'longitude' => '-46.36643',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'R. Lourenço Paganucci',
+            'city' => 'São Paulo',
+            'postal_code' => '08502-005',
+            'image_path' => 'none',
+            'latitude' => '-23.53829',
+            'longitude' => '-46.36524',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'R. Benjamin Constant',
+            'city' => 'São Paulo',
+            'postal_code' => '08502-030',
+            'image_path' => 'none',
+            'latitude' => '-23.535220',
+            'longitude' => '-46.360370',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'Av. Brasil',
+            'city' => 'São Paulo',
+            'postal_code' => '08500-025',
+            'image_path' => 'none',
+            'latitude' => '-23.542510',
+            'longitude' => '-46.369430',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'R. Caetano Rúbio',
+            'city' => 'São Paulo',
+            'postal_code' => '08527-051',
+            'image_path' => 'none',
+            'latitude' => '-23.547150',
+            'longitude' => '-46.377550',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'R. Dr. Eduardo Vaz',
+            'city' => 'São Paulo',
+            'postal_code' => '08534-430',
+            'image_path' => 'none',
+            'latitude' => '-23.553910',
+            'longitude' => '-46.384050',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'Estrada de Poá',
+            'city' => 'São Paulo',
+            'postal_code' => '08526-000',
+            'image_path' => 'none',
+            'latitude' => '-23.554900',
+            'longitude' => '-46.392030',
+        ]);
+
+        \App\Models\Report::updateOrCreate([
+            'user_id' => 1,
+            'type' => 'flood',
+            'description' => 'Área Alagada',
+            'status' => 'approved',
+            'address' => 'Estrada de Poá',
+            'city' => 'São Paulo',
+            'postal_code' => '08526-000',
+            'image_path' => 'none',
+            'latitude' => '-23.554900',
+            'longitude' => '-46.392030',
+        ]);
     }
 }
