@@ -6,6 +6,9 @@
                 <label for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
                 <div class="relative w-full">
+                    <div>
+                        <p class="text-white text-sm -mt-4">*Por favor, faça a pesquisa pelo CEP (Código Postal) do local.</p>
+                    </div>
                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                         <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -99,15 +102,12 @@
                         const longitude = parseFloat(report.longitude);
                         const description = report.description;
 
-                        if (latitude && longitude && isValidCoordinate(latitude, longitude)) {
+                        if (isValidCoordinate(latitude, longitude)) {
                             addMarker({ lat: latitude, lng: longitude }, description);
+                        } else if (report.address) {
+                            geocodeAddress(report.address, description);
                         } else {
-                            // Geocodificar usando o CEP (aqui assumimos que o CEP está em `report.address`)
-                            if (report.address) {
-                                geocodeAddress(report.address, description);
-                            } else {
-                                console.error('Endereço ausente para geocodificação.');
-                            }
+                            console.error('Endereço ausente para geocodificação.');
                         }
                     });
                 })
@@ -117,16 +117,30 @@
         }
 
         function geocodeAddress(address, description) {
+            if (!address) {
+                console.error('Endereço ausente para geocodificação.');
+                return;
+            }
+
             geocoder.geocode({ address: address }, (results, status) => {
                 if (status === 'OK') {
                     if (results[0] && results[0].geometry && results[0].geometry.location) {
                         const location = results[0].geometry.location;
                         addMarker({ lat: location.lat(), lng: location.lng() }, description);
+                        // Ajuste o zoom e o centro se for a primeira localização
+                        if (markers.length === 0) {
+                            map.setCenter({ lat: location.lat(), lng: location.lng() });
+                            map.setZoom(14);
+                        }
                     } else {
                         console.error('Resultado da geocodificação sem localização válida.');
                     }
                 } else {
                     console.error('Geocodificação falhou: ' + status);
+                    if (status === 'ZERO_RESULTS') {
+                        // Exibir o modal se não houver informações sobre o local
+                        document.getElementById('error-modal').classList.remove('hidden');
+                    }
                 }
             });
         }
@@ -160,35 +174,32 @@
         // Adiciona a funcionalidade de pesquisa
         document.getElementById('search-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            const searchTerm = document.getElementById('default-search').value;
+            const searchTerm = document.getElementById('default-search').value.trim();
 
-            fetch(`/search-location?search_term=${encodeURIComponent(searchTerm)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao buscar a localização: ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data && data.latitude && data.longitude) {
-                        const location = { lat: data.latitude, lng: data.longitude };
-                        if (isValidCoordinate(location.lat, location.lng)) {
-                            // Zoom no local pesquisado e centraliza o mapa
-                            map.setCenter(location); // Define o centro do mapa
-                            map.setZoom(14);  // Define um zoom mais próximo
-                            clearMarkers();
-                            addMarker(location, data.description);
-                        } else {
-                            console.error('Coordenadas inválidas para a localização:', location);
-                        }
+            if (!searchTerm) {
+                console.error('Termo de pesquisa vazio.');
+                return;
+            }
+
+            geocoder.geocode({ address: searchTerm }, (results, status) => {
+                if (status === 'OK') {
+                    const location = results[0].geometry.location;
+                    const locationLat = location.lat();
+                    const locationLng = location.lng();
+                    if (isValidCoordinate(locationLat, locationLng)) {
+                        map.setCenter({ lat: locationLat, lng: locationLng }); // Define o centro do mapa na localização pesquisada
+                        map.setZoom(14);  // Define um zoom mais próximo
+                        clearMarkers();
+                        addMarker({ lat: locationLat, lng: locationLng }, searchTerm); // Adiciona um marcador com a descrição da pesquisa
                     } else {
-                        // Exibir o modal se não houver informações sobre o local
-                        document.getElementById('error-modal').classList.remove('hidden');
+                        console.error('Coordenadas inválidas para o local pesquisado:', locationLat, locationLng);
                     }
-                })
-                .catch(error => {
-                    console.error('Erro ao buscar a localização:', error);
-                });
+                } else {
+                    console.error('Geocodificação falhou: ' + status);
+                    // Exibir o modal se não houver informações sobre o local
+                    document.getElementById('error-modal').classList.remove('hidden');
+                }
+            });
         });
 
         // Fecha o modal

@@ -100,8 +100,15 @@ class ReportResource extends Resource
                         'rejected' => 'Recusado',
                     ]),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
+                    ->label('Status')
+                    ->options([
+                        'pending' => 'Pendente',
+                        'approved' => 'Aprovado',
+                        'rejected' => 'Recusado',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\Action::make('approve')
@@ -118,15 +125,11 @@ class ReportResource extends Resource
                                 $location = $data['results'][0]['geometry']['location'];
                                 $latitude = $location['lat'];
                                 $longitude = $location['lng'];
-                                if ($latitude >= -24.0 && $latitude <= -23.0 && $longitude >= -47.0 && $longitude <= -46.0) {
-                                    $record->update([
-                                        'status' => 'approved',
-                                        'latitude' => $latitude,
-                                        'longitude' => $longitude,
-                                    ]);
-                                } else {
-                                    throw new \Exception('Coordenadas fora da faixa esperada para São Paulo');
-                                }
+                                $record->update([
+                                    'status' => 'approved',
+                                    'latitude' => $latitude,
+                                    'longitude' => $longitude,
+                                ]);
                             } else {
                                 throw new \Exception('Erro ao obter coordenadas: ' . $data['status']);
                             }
@@ -157,7 +160,6 @@ class ReportResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
 
                 ]),
-
             ]);
     }
 
