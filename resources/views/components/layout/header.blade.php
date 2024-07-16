@@ -3,7 +3,9 @@
     x-cloak x-data="{ openMenu: false }" :class="openMenu ? 'overflow-hidden' : 'overflow-visible'">
 
     <div>
-        <img class="w-48" src="{{ Vite::asset('resources/images/new-logo-pce.png') }}" alt="Logo Paulo Rifas Branco">
+        <a href="{{ route('home') }}">
+            <img class="w-48" src="{{ Vite::asset('resources/images/new-logo-pce.png') }}" alt="Logo Paulo Rifas Branco">
+        </a>
     </div>
 
     <div class="flex gap-4">
