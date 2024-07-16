@@ -44,7 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/reclamacoes', [ReportController::class, 'list'])->name('pages.listReport');
-
 });
 
 Route::get('/dashboard/create', [ReportController::class, 'index'])->name('reports.create');
@@ -54,8 +53,4 @@ Route::get('/dashboard/reclamacoes', [ReportController::class, 'show'])->name('r
 Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
 Route::get('/search-location', [LocationSearch::class, 'search'])->name('search.location');
 
-// Route::get('/weather', function () {
-//     return view('pages.weather');
-// })->name('weather');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

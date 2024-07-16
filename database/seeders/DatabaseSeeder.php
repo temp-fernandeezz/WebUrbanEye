@@ -168,5 +168,27 @@ class DatabaseSeeder extends Seeder
             'latitude' => '-23.554900',
             'longitude' => '-46.392030',
         ]);
+
+        \App\Models\Post::updateOrCreate([
+            'user_id' => 1,
+            'title' => 'Prevenção de Alagamentos: O Que Você Pode Fazer para Ajudar',
+            'summary' => 'Saiba como prevenir alagamentos e proteger sua comunidade com essas dicas práticas e eficazes.',
+            'content' => '**1. Mantenha a Drenagem Limpa**
+Certifique-se de que bueiros e drenos estão livres de detritos. O acúmulo de lixo e folhas pode bloquear a drenagem da água da chuva e contribuir para alagamentos.
+
+**2. Plante Árvores e Vegetação**
+Árvores e plantas ajudam a absorver a água da chuva e reduzem o escoamento superficial. Considere plantar árvores e manter áreas verdes em sua propriedade.
+
+**3. Não Descarte Lixo nas Ruas**
+Evite jogar lixo nas ruas e calçadas, pois isso pode obstruir a drenagem e agravar os problemas de alagamento. Sempre utilize os recipientes adequados para o descarte de lixo.
+
+**4. Verifique o Sistema de Drenagem da Sua Casa**
+Se você percebe que a água da chuva não está escoando adequadamente, pode ser necessário verificar o sistema de drenagem da sua casa e realizar manutenções, se necessário.
+
+**5. Esteja Preparado para Situações de Emergência**
+Tenha um plano de emergência para situações de alagamento, incluindo um local seguro para se abrigar e um kit de emergência com itens essenciais.',
+            'tags' => ['alagamento', 'prevenção', 'meio ambiente', 'segurança'],
+            'banner' => 'https://th.bing.com/th/id/R.bb52428ce2f097629469738803498993?rik=4nChmLDw9QlHXg&pid=ImgRaw&r=0',
+        ]);
     }
 }

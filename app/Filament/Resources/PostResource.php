@@ -37,7 +37,11 @@ class PostResource extends Resource
                     ->image(),
                 TextInput::make('summary')
                     ->required(),
-                TagsInput::make('tags'),
+                    TagsInput::make('tags')
+                    ->label('Tags')
+                    ->placeholder('Adicione tags')
+                    ->helperText('Adicione tags separadas por vírgulas.')
+                    ->columnSpan(2),  
                 RichEditor::make('content')
                     ->required(),
             ]);

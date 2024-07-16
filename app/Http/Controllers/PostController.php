@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Tag;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -16,8 +18,22 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $post = Post::create($request->all());
-        return response()->json($post, 201);
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required',
+            'tags' => 'nullable|array',
+            'tags.*' => 'string',
+            'banner' => 'nullable|string',
+            'summary' => 'nullable|string',
+        ]);
+    
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        $validated['content'] = $purifier->purify($validated['content']);
+    
+        Post::create($validated);
+
+        return response()->json($validated);
     }
 
     public function show($id)

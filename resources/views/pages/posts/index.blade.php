@@ -8,7 +8,7 @@
             <div class="flex flex-wrap mb-4">
                 
             </div>
-            <p class="text-gray-800 whitespace-pre-line">{{ $post->content }}</p>
+          {!! $post->content !!}
         </div>
     </div>
 </x-base-layout>
