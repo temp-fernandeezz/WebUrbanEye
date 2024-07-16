@@ -23,7 +23,6 @@ class ReportController extends Controller
             'type' => 'required|string|in:flood,litter',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'country' => 'required|string|max:255',
             'postal_code' => 'required|string|max:255',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
@@ -34,7 +33,6 @@ class ReportController extends Controller
         $report->type = $validated['type'];
         $report->address = $validated['address'];
         $report->city = $validated['city'];
-        $report->country = $validated['country'];
         $report->postal_code = $validated['postal_code'];
         $report->description = $validated['description'];
 

@@ -4,19 +4,50 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-blueGray-100 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        @if (session('success'))
-                            <p class="text-green-500">{{ session('success') }}</p>
-                        @endif
+                        <!-- Modal Background -->
+                        <div x-data="{ showModal: false }" x-init="@if (session('success') || $errors->any()) showModal = true @endif" x-show="showModal"
+                            class="fixed inset-0 flex items-center justify-center z-50">
+                            <div class="fixed inset-0 bg-gray-900 opacity-50"></div>
 
-                        @if ($errors->any())
-                            <div class="bg-red-100 text-red-800 p-4 mb-4">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                            <!-- Modal -->
+                            <div
+                                class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all max-w-lg w-full p-6">
+                                <!-- Modal Header -->
+                                <div class="flex justify-between items-center pb-3">
+                                    <p class="text-2xl font-bold">Mensagem</p>
+                                    <button @click="showModal = false" class="text-black">
+                                        <span class="text-2xl">&times;</span>
+                                    </button>
+                                </div>
+
+                                <!-- Modal Body -->
+                                <div>
+                                    @if (session('success'))
+                                        <p class="text-green-500 text-2xl">{{ session('success') }}</p>
+                                        <p class="text-black text-xl">Pedimos que aguarde uma resposta, logo entraremos em contato!</p>
+                                    @endif
+
+                                    @if ($errors->any())
+                                        <div class="bg-red-100 text-red-800 p-4 mb-4">
+                                            <ul>                                                    
+                                                <p class="text-red-500 text-xl">Opa, encontramos alguns erros, por favor verifique se tudo esta preenchido corretamente.</p>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="flex justify-end pt-2">
+                                    <button @click="showModal = false"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        Fechar
+                                    </button>
+                                </div>
                             </div>
-                        @endif
+                        </div>
+
 
                         <form action="{{ route('reports.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf

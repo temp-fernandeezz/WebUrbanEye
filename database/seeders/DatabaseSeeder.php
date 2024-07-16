@@ -61,17 +61,6 @@ class DatabaseSeeder extends Seeder
             'city' => 'São Paulo',
             'postal_code' => '08530-300',
             'image_path' => 'none',
-        ]);
-
-        \App\Models\Report::updateOrCreate([
-            'user_id' => 1,
-            'type' => 'flood',
-            'description' => 'Área Alagada',
-            'status' => 'approved',
-            'address' => 'Av. Brasil',
-            'city' => 'São Paulo',
-            'postal_code' => '08530-300',
-            'image_path' => 'none',
             'latitude' => '-23.54107',
             'longitude' => '-46.36841',
         ]);
