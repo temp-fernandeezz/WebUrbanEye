@@ -2,14 +2,18 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <script src="//unpkg.com/alpinejs" defer></script>
     <title>Pesquisa e Central de Enchentes</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ Vite::asset('resources/images/icons-rain.png') }}">
     <meta name="description" content="A P.C.E é um site voltado para a segurança de todos os cidadões">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
     @vite('resources/css/app.css')
 
     <style>
+        [x-cloack] {
+            display: none !important;
+        }
+
         .lds-dual-ring {
             display: inline-block;
             width: 80px;

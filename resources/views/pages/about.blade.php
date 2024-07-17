@@ -36,10 +36,10 @@
             </div>
 
             <div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                <div class="grid grid-cols-2 justify-items-center lg:grid-cols-4 gap-4 text-center">
                     @if ($about->isNotEmpty())
                         @foreach ($about as $item)
-                            <div class="bg-gray-300 rounded-md p-4">
+                            <div class="bg-gray-300 rounded-md lg:w-auto w-fit p-4">
                                 @if ($item->representative_image)
                                     <img class="object-fill rounded-md w-72"
                                         src="{{ asset($item->representative_image) }}" alt="Representante">

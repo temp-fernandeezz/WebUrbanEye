@@ -1,6 +1,6 @@
 <x-base-layout>
     <section class="bg-musgo h-[30vh] mb-12">
-        <div class="max-w-7xl mx-auto pt-[10.3rem]">
+        <div class="max-w-7xl mx-auto pt-[10.3rem] lh:px-0 px-4">
             <form id="search-form" method="POST" class="flex">
                 @csrf
                 <label for="default-search"
@@ -28,7 +28,7 @@
 
     <!-- Mapa do Google -->
     <section class="max-w-7xl mx-auto my-4">
-        <div id="map" class="w-full h-[650px]"></div>
+        <div id="map" class="w-full h-[650px] lg:px-0 px-4"></div>
     </section>
 
     <section>
