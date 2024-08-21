@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Pesquisa e Central de Enchentes</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ Vite::asset('resources/images/icons-rain.png') }}">
-    <meta name="description" content="A P.C.E é um site voltado para a segurança de todos os cidadões">
+    <title>UrbanEye</title>
+    <link rel="icon" type="icon" sizes="16x16" href="{{ Vite::asset('resources/images/new-ico.ico') }}">
+    <meta name="description" content="A UrbanEye é um site voltado para a segurança de todos os cidadões">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -65,7 +65,7 @@
 </head>
 <div class="loading-screen" id="loading-screen">
     <div class="lds-dual-ring"></div>
-    <img width="140" src="{{ Vite::asset('resources/images/new-logo-pce.png') }}" alt="Logo PCE">
+    <img width="140" src="{{ Vite::asset('resources/images/gif-urban.gif') }}" alt="Logo PCE">
 </div>
 
 <body class="font-sans antialiased">
@@ -85,9 +85,14 @@
 </body>
 <script>
     window.addEventListener('DOMContentLoaded', function() {
-        const loading = document.querySelector('#loading-screen');
+    const loading = document.querySelector('#loading-screen');
+    
+    // Adiciona um atraso de 2 segundos (2000 milissegundos)
+    setTimeout(function() {
         loading.classList.add('hide');
-    })
+    }, 4000);
+});
+
 </script>
 
 </html>

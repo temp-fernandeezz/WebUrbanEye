@@ -2,9 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>Pesquisa e Central de Enchentes</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ Vite::asset('resources/images/icons-rain.png') }}">
-    <meta name="description" content="A P.C.E é um site voltado para a segurança de todos os cidadões">
+    <title>UrbanEye</title>
+    <link rel="icon" type="icon" sizes="16x16" href="{{ Vite::asset('resources/images/new-ico.ico') }}">
+    <meta name="description" content="A UrbanEye é um site voltado para a segurança de todos os cidadões">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
     @vite('resources/css/app.css')
@@ -50,7 +50,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #102122;
+            background-color: #00261a;
             z-index: 99999;
             display: flex;
             justify-content: center;
@@ -66,7 +66,7 @@
 </head>
 <div class="loading-screen" id="loading-screen">
     <div class="lds-dual-ring"></div>
-    <img width="140" src="{{ Vite::asset('resources/images/new-logo-pce.png') }}" alt="Logo PCE">
+    <img width="140" src="{{ Vite::asset('resources/images/gif-urban.gif') }}" alt="Logo PCE">
 </div>
 
 <body class="bg-[#e1ddd2]">
@@ -79,7 +79,12 @@
 </body>
 <script>
     window.addEventListener('DOMContentLoaded', function() {
-        const loading = document.querySelector('#loading-screen');
+    const loading = document.querySelector('#loading-screen');
+    
+    // Adiciona um atraso de 2 segundos (2000 milissegundos)
+    setTimeout(function() {
         loading.classList.add('hide');
-    })
+    }, 4000);
+});
+
 </script>

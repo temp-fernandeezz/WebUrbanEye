@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::post('/user/change-password', [AuthController::class, 'changePassword']);
+    Route::post('/user/upload-image', [AuthController::class, 'uploadImage']);
+    Route::get('/user', [AuthController::class, 'getUserInfo']);
 });
 
-Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
+// Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
+
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/user/upload-image', [AuthController::class, 'uploadImage']);

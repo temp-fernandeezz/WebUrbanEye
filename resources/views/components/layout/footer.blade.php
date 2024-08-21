@@ -34,8 +34,7 @@
         </div>
 
         <div>
-            <p class="text-white text-center pt-4 text-sm">© Todos os direitos reservados. P.C.E - Pesquisa e Central de
-                Enchentes. </p>
+            <p class="text-white text-center pt-4 text-sm">© Todos os direitos reservados. UrbanEye. </p>
         </div>
     </div>
 </footer>

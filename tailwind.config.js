@@ -13,7 +13,7 @@ export default {
         extend: {
             colors: {
               'gold-1': '#E3B873',
-              'musgo': '#102122',
+              'musgo': '#00261a',
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

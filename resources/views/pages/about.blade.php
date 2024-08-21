@@ -4,7 +4,7 @@
         <div class="w-full h-[26rem] absolute z-10 bg-black opacity-60 flex items-center justify-center">
             <div class="w-full max-w-screen-lg p-8 border-4 border-white h-96 content-center text-center">
                 <h1 class="text-white text-5xl mb-8">
-                    Conheça a P.C.E
+                    Conheça UrbanEye
                 </h1>
                 <p class="text-white text-2xl mb-8 title-home italic">
                     Uma ideia universitária para o desenvolvimento da cidade

@@ -1,8 +1,8 @@
-<header class="bg-black flex items-center justify-between py-4 px-8 md:px-12 mx-auto z-50 h-auto w-full" x-cloak
+<header class="bg-[#00261a] flex items-center justify-between py-4 px-8 md:px-12 mx-auto z-50 h-auto w-full" x-cloak
     x-data="{ openMenu: false }">
     <div>
         <a href="{{ route('home') }}">
-            <img class="w-48" src="{{ Vite::asset('resources/images/new-logo-pce.png') }}" alt="Logo Paulo Rifas Branco">
+            <img class="w-48" src="{{ Vite::asset('resources/images/urbaneye-logo.png') }}" alt="Logo Paulo Rifas Branco">
         </a>
     </div>
 
