@@ -5,8 +5,8 @@
                 <div class="bg-blueGray-100 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <!-- Modal Background -->
-                        <div x-data="{ showModal: false }" x-init="@if (session('success') || $errors->any()) showModal = true @endif" x-show="showModal"
-                            class="fixed inset-0 flex items-center justify-center z-50">
+                        <div x-data="{ showModal: false }" x-init="@if ($errors->any()) showModal = true @endif" x-show="showModal"
+                            class="fixed inset-0 flex items-center justify-center z-50" @keydown.escape.window="showModal = false">
                             <div class="fixed inset-0 bg-gray-900 opacity-50"></div>
 
                             <!-- Modal -->
@@ -29,8 +29,8 @@
 
                                     @if ($errors->any())
                                         <div class="bg-red-100 text-red-800 p-4 mb-4">
-                                            <ul>                                                    
-                                                <p class="text-red-500 text-xl">Opa, encontramos alguns erros, por favor verifique se tudo esta preenchido corretamente.</p>
+                                            <p class="text-red-500 text-xl">Opa, encontramos alguns erros, por favor verifique se tudo está preenchido corretamente.</p>
+                                            <ul>
                                                 @foreach ($errors->all() as $error)
                                                     <li>{{ $error }}</li>
                                                 @endforeach
@@ -48,8 +48,7 @@
                             </div>
                         </div>
 
-
-                        <form action="{{ route('reports.store') }}" method="POST" enctype="multipart/form-data">
+                        <form id="reportForm" action="{{ route('reports.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                             <div class="flex flex-wrap">
@@ -155,11 +154,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit"
+                            <button id="submitButton" type="submit"
                                 class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600 focus:outline-none focus:ring w-full mt-4">Enviar
                                 Denúncia</button>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -169,6 +167,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const postalCodeInput = document.getElementById('postal_code');
+            const form = document.getElementById('reportForm');
+            const submitButton = document.getElementById('submitButton');
 
             postalCodeInput.addEventListener('blur', function() {
                 const postalCode = postalCodeInput.value.replace(/\D/g, '');
@@ -177,18 +177,23 @@
                     fetch(`https://viacep.com.br/ws/${postalCode}/json/`)
                         .then(response => response.json())
                         .then(data => {
-                            if (data.erro) {
-                                alert('CEP não encontrado.');
-                                return;
+                            if (!data.erro) {
+                                document.getElementById('address').value = data.logradouro;
+                                document.getElementById('city').value = data.localidade;
+                                document.getElementById('country').value = data.uf;
                             }
-
-                            document.getElementById('address').value = data.logradouro;
-                            document.getElementById('city').value = data.localidade;
-                            document.getElementById('country').value = data.uf;
                         })
-                        .catch(error => {
-                            console.error('Erro ao buscar o CEP:', error);
-                        });
+                        .catch(error => console.error('Error:', error));
+                }
+            });
+
+            form.addEventListener('submit', function(event) {
+                // Check for errors (this should be customized to your specific error-checking logic)
+                const errors = @json($errors->any());
+
+                if (errors) {
+                    event.preventDefault();
+                    document.querySelector('[x-data]').__x.$data.showModal = true;
                 }
             });
         });

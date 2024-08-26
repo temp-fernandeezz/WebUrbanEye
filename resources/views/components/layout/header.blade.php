@@ -23,22 +23,22 @@
             </svg>
         </button>
         <nav class="flex flex-col items-start gap-4 bg-black p-4 w-64">
-            <x-nav-link :href="route('about')" :active="request()->routeIs('about')" class="text-white py-2 px-4 hover:text-gold-1">
+            <x-nav-link :href="route('about')" :active="request()->routeIs('about')" class="text-white py-2 px-4 hover:text-[#E3B873]">
                 Sobre Nós
             </x-nav-link>
-            <x-nav-link :href="route('location')" :active="request()->routeIs('location')" class="text-white py-2 px-4 hover:text-gold-1">
+            <x-nav-link :href="route('location')" :active="request()->routeIs('location')" class="text-white py-2 px-4 hover:text-[#E3B873]">
                 Buscar Locais
             </x-nav-link>
-            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white py-2 px-4 hover:text-gold-1">
+            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white py-2 px-4 hover:text-[#E3B873]">
                 Realizar Reclamação
             </x-nav-link>
-            <x-nav-link :href="route('blog')" :active="request()->routeIs('blog')" class="text-white py-2 px-4 hover:text-gold-1">
+            <x-nav-link :href="route('blog')" :active="request()->routeIs('blog')" class="text-white py-2 px-4 hover:text-[#E3B873]">
                 Blog
             </x-nav-link>
-            <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="text-white py-2 px-4 hover:text-gold-1">
+            <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="text-white py-2 px-4 hover:text-[#E3B873]">
                 Login
             </x-nav-link>
-            <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="text-white py-2 px-4 hover:text-gold-1">
+            <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="text-white py-2 px-4 hover:text-[#E3B873]">
                 Cadastre-se
             </x-nav-link>
         </nav>
@@ -47,37 +47,37 @@
     <!-- Menu para telas grandes -->
     <nav class="hidden lg:flex gap-4">
         <x-nav-link :href="route('about')" :active="request()->routeIs('about')" class="group">
-            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-gold-1 text-white">
+            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-[#E3B873] text-white">
                 Sobre Nós
             </button>
         </x-nav-link>
 
         <x-nav-link :href="route('location')" :active="request()->routeIs('location')" class="group">
-            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-gold-1 text-white">
+            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-[#E3B873] text-white">
                 Buscar Locais
             </button>
         </x-nav-link>
 
         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="group">
-            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-gold-1 text-white">
+            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-[#E3B873] text-white">
                 Realizar Reclamação
             </button>
         </x-nav-link>
 
         <x-nav-link :href="route('blog')" :active="request()->routeIs('blog')" class="group">
-            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-gold-1 text-white">
+            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-[#E3B873] text-white">
                 Blog
             </button>
         </x-nav-link>
 
         <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="group">
-            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-gold-1 text-white">
+            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-[#E3B873] text-white">
                 Login
             </button>
         </x-nav-link>
 
         <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="group">
-            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-gold-1 text-white">
+            <button class="rounded-xl bg-transparent border-0 px-6 py-3 capitalize group-hover:text-[#E3B873] text-white">
                 Cadastre-se
             </button>
         </x-nav-link>

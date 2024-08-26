@@ -13,7 +13,7 @@
         </div>
     </section>
 
-    <section class="bg-musgo">
+    <section class="bg-[#00261a]">
         <div class="mx-auto max-w-6xl">
             <div class="py-8 text-center">
                 <div style="text-align: -webkit-center;">
@@ -32,7 +32,7 @@
     <section>
         <div class="max-w-7xl mx-auto mb-8">
             <div class="text-center py-8">
-                <h3 class="text-3xl text-musgo title-home font-semibold">Conheça os responsáveis pelo projeto</h3>
+                <h3 class="text-3xl text-[#00261a] title-home font-semibold">Conheça os responsáveis pelo projeto</h3>
             </div>
 
             <div>
@@ -44,12 +44,12 @@
                                     <img class="object-fill rounded-md w-72"
                                         src="{{ asset($item->representative_image) }}" alt="Representante">
                                 @endif
-                                <h1 class="text-2xl font-bold text-musgo mt-4">{{ $item->title }}</h1>
+                                <h1 class="text-2xl font-bold text-[#00261a] mt-4">{{ $item->title }}</h1>
                                 <div class="my-2">
                                     {!! $item->content !!}
                                 </div>
 
-                                <div class="my-4 text-musgo flex gap-8 justify-center">
+                                <div class="my-4 text-[#00261a] flex gap-8 justify-center">
                                     @if ($item->github_link)
                                         <div>
                                             <a href="{{ $item->github_link }}" target="_blank"

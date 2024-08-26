@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Pesquisa e Central de Enchentes</title>
+    <title>UrbanEye</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ Vite::asset('resources/images/icons-rain.png') }}">
     <meta name="description" content="A P.C.E é um site voltado para a segurança de todos os cidadões">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -64,14 +64,14 @@
 </head>
 <div class="loading-screen" id="loading-screen">
     <div class="lds-dual-ring"></div>
-    <img width="140" src="{{ Vite::asset('resources/images/new-logo-pce.png') }}" alt="Logo PCE">
+    <img width="140" src="{{ Vite::asset('resources/images/gif-urban.gif') }}" alt="Logo PCE">
 </div>
 
-<body class="font-sans bg-musgo antialiased">
+<body class="font-sans bg-[#00261a] antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100musgo">
         <div>
             <a href="/">
-                <Image class="w-48" src="{{ Vite::asset('resources/images/new-logo-pce.png') }}" />
+                <Image class="w-48" src="{{ Vite::asset('resources/images/gif-urban.gif') }}" />
             </a>
         </div>
 

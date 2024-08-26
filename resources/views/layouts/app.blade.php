@@ -9,6 +9,7 @@
     <title>UrbanEye</title>
     <link rel="icon" type="icon" sizes="16x16" href="{{ Vite::asset('resources/images/new-ico.ico') }}">
     <meta name="description" content="A UrbanEye é um site voltado para a segurança de todos os cidadões">
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -49,7 +50,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #102122;
+            background-color: #00261a;
             z-index: 99999;
             display: flex;
             justify-content: center;
@@ -72,7 +73,7 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
         @if (isset($header))
-            <header class="bg-black shadow">
+            <header class="bg-[#00261a] shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
@@ -90,7 +91,7 @@
     // Adiciona um atraso de 2 segundos (2000 milissegundos)
     setTimeout(function() {
         loading.classList.add('hide');
-    }, 4000);
+    }, 2000);
 });
 
 </script>

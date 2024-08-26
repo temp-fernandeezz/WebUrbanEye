@@ -1,6 +1,6 @@
 <x-base-layout>
-    <div class="bg-musgo h-44 border-b-2 border-gold-1">
-        <h1 class="text-4xl font-bold text-gold-1 text-center title-home italic tracking-widest pt-20">Confira as nossas
+    <div class="bg-[#00261a] h-44 border-b-2 border-[#E3B873]">
+        <h1 class="text-4xl font-bold text-[#E3B873] text-center title-home italic tracking-widest pt-20">Confira as nossas
             postagens</h1>
     </div>
     <div class="max-w-7xl mx-auto">

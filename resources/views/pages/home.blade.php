@@ -9,7 +9,7 @@
                 <div class="flex flex-wrap lg:flex-nowrap justify-center gap-4 pt-6">
                     <a href="{{ route('location') }}">
                         <button
-                            class="bg-gold-1 text-white py-2 px-6 border-2 border-gold-1 hover:bg-transparent hover:text-gold-1 transition">
+                            class="bg-[#E3B873] text-white py-2 px-6 border-2 border-[#E3B873] hover:bg-transparent hover:text-[#E3B873] transition">
                             Buscar Locais
                         </button>
                     </a>
@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <section class="bg-musgo">
+    <section class="bg-[#00261a]">
         <div class="mx-auto max-w-7xl">
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 justify-center p-14">
                 <div>
@@ -66,12 +66,12 @@
     <section>
         <div class="mx-auto max-w-7xl">
             <div class="text-center pb-20">
-                <h2 class="text-3xl xl:text-4xl text-musgo pt-10 title-home">
+                <h2 class="text-3xl xl:text-4xl text-[#00261a] pt-10 title-home">
                     Seviços da UrbanEye
                 </h2>
             </div>
             <div class="mx-auto text-center">
-                <p class="text-xl text-musgo">
+                <p class="text-xl text-[#00261a]">
                     Explore os serviços especializados oferecidos pela UrbanEye. Nossas
                     consultas e intervenções são projetadas para ajudá-lo a enfrentar com facilidade os desafios
                     relacionados às enchentes.
@@ -92,7 +92,7 @@
                             necessidade de inundações que prioriza sua segurança e bem-estar</p>
                     </div>
                     <div
-                        class="absolute left-1/2 transform -translate-x-1/2 hidden -translate-y-1/2 bg-white border-2 border-gray-300 rounded-full w-8 h-8 lg:flex items-center justify-center text-gold-1 text-lg font-bold">
+                        class="absolute left-1/2 transform -translate-x-1/2 hidden -translate-y-1/2 bg-white border-2 border-gray-300 rounded-full w-8 h-8 lg:flex items-center justify-center text-[#E3B873] text-lg font-bold">
                         1
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                             class="w-full h-auto lg:pt-0 pt-6">
                     </div>
                     <div
-                        class="absolute left-1/2 transform -translate-x-1/2 hidden -translate-y-1/2 bg-white border-2 border-gray-300 rounded-full w-8 h-8 lg:flex items-center justify-center text-gold-1 text-lg font-bold">
+                        class="absolute left-1/2 transform -translate-x-1/2 hidden -translate-y-1/2 bg-white border-2 border-gray-300 rounded-full w-8 h-8 lg:flex items-center justify-center text-[#E3B873] text-lg font-bold">
                         2
                     </div>
                 </div>

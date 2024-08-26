@@ -1,5 +1,5 @@
 <x-base-layout>
-    <section class="bg-musgo h-[30vh] mb-12">
+    <section class="bg-[#00261a] h-[30vh] mb-12">
         <div class="max-w-7xl mx-auto pt-[10.3rem] lh:px-0 px-4">
             <form id="search-form" method="POST" class="flex">
                 @csrf
@@ -34,7 +34,7 @@
     <section>
         <div class="max-w-7xl mx-auto mb-4">
             <div class="mb-5">
-                <p class="text-2xl text-musgo font-semibold">
+                <p class="text-2xl text-[#00261a] font-semibold">
                     Legenda dos ícones
                 </p>
             </div>
@@ -44,7 +44,7 @@
                         alt="Imagem Alert Location">
                 </div>
                 <div>
-                    <p class="text-musgo text-lg">
+                    <p class="text-[#00261a] text-lg">
                         Local de Risco - Alagamento
                     </p>
                 </div>
