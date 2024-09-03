@@ -6,46 +6,30 @@
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-6">
                         {{ __('Lista de Denúncias') }}
                     </h2>
-
-                    <div class="mb-4">
+ 
+                    <div class="space-y-4">
                         @foreach ($reports as $report)
-                            <div class="mb-4">
-                                <button class="accordion bg-gray-200 p-4 w-full text-left flex justify-between">
-                                    <span><strong>Rua:</strong> {{ $report->address }}</span>
-                                    <span class="ml-4"><strong>Data:</strong>
-                                        {{ $report->created_at->format('d/m/Y') }}</span>
-                                    <span class="ml-4"><strong>Status:</strong>
-                                        @if ($report->status === 'pending')
-                                            <span class="text-yellow-500">Pendente</span>
-                                        @elseif ($report->status === 'approved')
-                                            <span class="text-green-500">Aprovado</span>
-                                        @else
-                                            <span class="text-red-500">Rejeitado</span>
-                                        @endif
-                                    </span>
-                                    <span>
-                                        <svg class="w-6 h-6" fill="#000000" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg" stroke="#000000">
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                stroke-linejoin="round"></g>
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g data-name="Layer 2">
-                                                    <g data-name="arrow-ios-downward">
-                                                        <rect width="14" height="14" opacity="0"></rect>
-                                                        <path
-                                                            d="M12 16a1 1 0 0 1-.64-.23l-6-5a1 1 0 1 1 1.28-1.54L12 13.71l5.36-4.32a1 1 0 0 1 1.41.15 1 1 0 0 1-.14 1.46l-6 4.83A1 1 0 0 1 12 16z">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </span>
+                            <div x-data="{ open: false }" :class="{'bg-[#f5e782]': '{{ $report->status }}' === 'pending', 'bg-[#98FB98]': '{{ $report->status }}' === 'approved', 'bg-[#ff999b]': '{{ $report->status }}' === 'rejected'}" class="relative overflow-hidden border-l-[0.4rem] rounded shadow-md">
+                                <button @click="open = !open" class="w-full p-[0.7em] flex items-center justify-between cursor-pointer text-left transition-all duration-300 ease-in-out">
+                                    <div class="text-4xl flex items-center justify-center">
+                                        <h2 x-text="open ? '−' : '+'"></h2>
+                                    </div>
+                                    <h2 class="w-[80%] text-xs flex flex-col">
+                                        <span><strong>Rua:</strong> {{ $report->address }}</span>
+                                        <span><strong>Data:</strong> {{ $report->created_at->format('d/m/Y') }}</span>
+                                        <span><strong>Status:</strong>
+                                            @if ($report->status === 'pending')
+                                                <span class="text-yellow-500">Pendente</span>
+                                            @elseif ($report->status === 'approved')
+                                                <span class="text-green-500">Aprovado</span>
+                                            @else
+                                                <span class="text-red-500">Rejeitado</span>
+                                            @endif
+                                        </span>
+                                    </h2>
                                 </button>
-                                <div class="accordion-content hidden bg-gray-200 p-4">
-                                    <p><strong>Tipo:</strong>
-                                        {{ $report->type === 'flood' ? 'Alagamento' : 'Descarte Irregular de Lixo' }}
-                                    </p>
+                                <div x-show="open" class="transition-all duration-[1s] ease-in-out max-h-screen p-[1rem] text-[0.8rem]">
+                                    <p><strong>Tipo:</strong> {{ $report->type === 'flood' ? 'Alagamento' : 'Descarte Irregular de Lixo' }}</p>
                                     <p><strong>Endereço:</strong> {{ $report->address }}</p>
                                     <p><strong>Cidade:</strong> {{ $report->city }}</p>
                                     <p><strong>Estado:</strong> {{ $report->country }}</p>
@@ -63,11 +47,8 @@
                                             <p class="text-red-600 mt-2">Infelizmente não conseguimos aceitar sua reclamação, por favor, verifique se sua imagem está nítida e se o endereço coincide com a foto enviada.</p>
                                         @endif
                                     </p>
-                                    
                                     @if ($report->image_path)
-                                        <p><strong>Imagem:</strong> <a
-                                                href="{{ Storage::url('public/images/' . $report->image_path) }}"
-                                                target="_blank" class="text-blue-500">Ver Imagem</a></p>
+                                        <p><strong>Imagem:</strong> <a href="{{ Storage::url('public/images/' . $report->image_path) }}" target="_blank" class="text-blue-500">Ver Imagem</a></p>
                                     @else
                                         <p><strong>Imagem:</strong> Nenhuma Imagem</p>
                                     @endif
@@ -79,21 +60,7 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var accordions = document.querySelectorAll('.accordion');
-            accordions.forEach(function(accordion) {
-                accordion.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    var panel = this.nextElementSibling;
-                    if (panel.style.display === 'block') {
-                        panel.style.display = 'none';
-                    } else {
-                        panel.style.display = 'block';
-                    }
-                });
-            });
-        });
-    </script>
 </x-app-layout>
+ 
+<!-- Alpine.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>

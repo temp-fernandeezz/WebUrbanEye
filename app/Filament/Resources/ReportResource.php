@@ -86,9 +86,6 @@ class ReportResource extends Resource
                 Tables\Columns\TextColumn::make('type')
                     ->label('Tipo de Denúncia')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('address')
-                    ->label('Localização')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('postal_code')
                     ->label('CEP')
                     ->searchable(),

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LocationSearch;
 use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('/user', [AuthController::class, 'getUserInfo']);
 });
 
-// Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
+Route::get('/location/search', [LocationSearch::class, 'search']);
+
+Route::get('/locations/approved', [ReportController::class, 'getApprovedLocations']);
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/user/upload-image', [AuthController::class, 'uploadImage']);

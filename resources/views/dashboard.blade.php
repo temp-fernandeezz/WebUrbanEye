@@ -132,6 +132,7 @@
                                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                             <option value="" disabled selected>Escolha um tipo</option>
                                             <option value="flood">Alagamento</option>
+                                            <option value="robberies">Assalto</option>
                                             <option value="illegal_dump">Descarte Irregular de Lixo</option>
                                         </select>
                                         @error('type')

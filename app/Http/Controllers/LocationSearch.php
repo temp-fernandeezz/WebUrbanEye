@@ -11,7 +11,6 @@ class LocationSearch extends Controller
     {
         $searchTerm = $request->query('search_term');
 
-        // Tenta buscar por endereço ou CEP
         $report = Report::where('address', 'LIKE', '%' . $searchTerm . '%')
                         ->orWhere('postal_code', $searchTerm)
                         ->orWhere('city', 'LIKE', '%' . $searchTerm . '%')
@@ -24,7 +23,7 @@ class LocationSearch extends Controller
                 'description' => $report->description
             ]);
         } else {
-            return response()->json(['error' => 'Local não encontrado'], 404);  // Mensagem de erro para o frontend
+            return response()->json(['error' => 'Local não encontrado'], 404); 
         }
     }
 }

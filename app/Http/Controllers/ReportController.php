@@ -20,7 +20,7 @@ class ReportController extends Controller
     {
         $validated = $request->validate([
             'user_id' => '',
-            'type' => 'required|string|in:flood,litter',
+            'type' => 'required|string|in:flood,illegal_dump,robberies',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:255',
@@ -60,7 +60,7 @@ class ReportController extends Controller
     }
     public function getApprovedLocations()
     {
-        $reports = Report::where('status', 'approved')->get(['latitude', 'longitude', 'description']);
+        $reports = Report::where('status', 'approved')->get(['latitude', 'longitude', 'description', 'type']);
 
         // Adicione logs para verificar os dados
         \Illuminate\Support\Facades\Log::info('Approved locations: ', $reports->toArray());
