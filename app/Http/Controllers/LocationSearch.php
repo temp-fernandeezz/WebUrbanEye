@@ -8,22 +8,21 @@ use Illuminate\Http\Request;
 class LocationSearch extends Controller
 {
     public function search(Request $request)
-    {
-        $searchTerm = $request->query('search_term');
+{
+    $postalCode = $request->query('postal_code'); // Corrige o nome do parâmetro
 
-        $report = Report::where('address', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('postal_code', $searchTerm)
-                        ->orWhere('city', 'LIKE', '%' . $searchTerm . '%')
-                        ->first();
+    $report = Report::where('postal_code', $postalCode)->first();
 
-        if ($report) {
-            return response()->json([
-                'latitude' => $report->latitude,
-                'longitude' => $report->longitude,
-                'description' => $report->description
-            ]);
-        } else {
-            return response()->json(['error' => 'Local não encontrado'], 404); 
-        }
+    if ($report) {
+        return response()->json([
+            'address' => $report->address,
+            'latitude' => $report->latitude,
+            'longitude' => $report->longitude,
+            'description' => $report->description
+        ]);
+    } else {
+        return response()->json(['error' => 'Local não encontrado'], 404); 
     }
+}
+
 }

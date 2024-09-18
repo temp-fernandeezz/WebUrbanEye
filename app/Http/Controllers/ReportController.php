@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\ReportNotification;
+use Illuminate\Support\Facades\Notification;
 use Log;
 
 class ReportController extends Controller
@@ -35,10 +38,22 @@ class ReportController extends Controller
         $report->city = $validated['city'];
         $report->postal_code = $validated['postal_code'];
         $report->description = $validated['description'];
+        $report->latitude = $validated['latitude'];
+        $report->longitude = $validated['longitude'];
 
         if ($request->hasFile('image_path')) {
             $imagePath = $request->file('image_path')->store('public/images');
             $report->image_path = basename($imagePath);
+        }
+
+        if ($report->type === 'robberies') {
+            // Enviar notificações apenas para usuários próximos
+            $radius = 300; // Raio em metros
+            $users = User::all()->filter(function ($user) use ($report, $radius) {
+                return $user->distanceTo($report->latitude, $report->longitude) <= $radius;
+            });
+
+            Notification::send($users, new ReportNotification($report));
         }
 
         $report->save();

@@ -27,6 +27,8 @@ Route::get('/location/search', [LocationSearch::class, 'search']);
 
 Route::get('/locations/approved', [ReportController::class, 'getApprovedLocations']);
 
+Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
+
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/user/upload-image', [AuthController::class, 'uploadImage']);
 Route::post('/register', [AuthController::class, 'register']);

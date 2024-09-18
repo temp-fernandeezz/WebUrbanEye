@@ -60,6 +60,9 @@
                         <p class="text-[#00261a] text-lg">
                             Local de Assaltos
                         </p>
+                        <p class="text-[#00261a] text-sm">
+                            *Cada local de assalto é adicionado ao mapa <br> com um raio de 600 metros.*Cada local de assalto é adicionado ao mapa <br> com um raio de 600 metros.
+                        </p>
                     </div>
                 </div>
                 <div class="flex gap-4 items-center">
