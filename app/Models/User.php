@@ -28,13 +28,12 @@ class User extends Authenticatable
         'type',
     ];
 
-    // app/Models/User.php
     public function distanceTo($lat2, $lon2)
     {
-        $lat1 = $this->latitude; // Supondo que você tenha latitude armazenada no usuário
-        $lon1 = $this->longitude; // Supondo que você tenha longitude armazenada no usuário
+        $lat1 = $this->latitude;
+        $lon1 = $this->longitude;
 
-        $earthRadius = 6371000; // Raio da Terra em metros
+        $earthRadius = 6371000;
 
         $dLat = deg2rad($lat2 - $lat1);
         $dLon = deg2rad($lon2 - $lon1);
@@ -67,4 +66,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

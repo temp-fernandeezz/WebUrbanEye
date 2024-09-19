@@ -26,6 +26,8 @@ class NotificationResource extends Resource
                 Forms\Components\TextInput::make('title')->required(),
                 Forms\Components\Textarea::make('message')->required(),
                 Forms\Components\Checkbox::make('confirmed'),
+                Tables\Columns\TextColumn::make('reports.address')->label('Endereço'),
+                Tables\Columns\TextColumn::make('reports.city')->label('Cidade')
             ]);
     }
 
@@ -33,9 +35,16 @@ class NotificationResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('message'),
-                Tables\Columns\BooleanColumn::make('confirmed'),
+                Tables\Columns\TextColumn::make('title')
+                    ->label('Título'),
+                Tables\Columns\TextColumn::make('message')
+                    ->label('Mensagem'),
+                Tables\Columns\BooleanColumn::make('confirmed')
+                    ->label('Confirmado'),
+                Tables\Columns\TextColumn::make('report.address')
+                    ->label('Endereço'),
+                Tables\Columns\TextColumn::make('report.city')
+                    ->label('Cidade'),
             ])
             ->filters([
                 //
@@ -56,7 +65,7 @@ class NotificationResource extends Resource
             //
         ];
     }
-    
+
 
     public static function getPages(): array
     {
