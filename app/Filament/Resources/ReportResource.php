@@ -67,7 +67,7 @@ class ReportResource extends Resource
                                 return [$location['lat'], $location['lng']];
                             }
                         }
-                        return [-23.55052, -46.633308]; // Coordenadas de São Paulo como fallback
+                        return [-23.55052, -46.633308];
                     })
                     ->defaultZoom(12)
                     ->columnSpan(2)
