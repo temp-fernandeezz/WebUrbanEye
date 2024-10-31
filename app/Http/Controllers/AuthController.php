@@ -81,8 +81,22 @@ class AuthController extends Controller
     }
 
 
-    public function getUserInfo()
-    {
-        return response()->json(Auth::user());
+    public function getUserInfo(Request $request)
+{
+    $token = $request->bearerToken(); // Obtém o token da requisição
+    if (!$token) {
+        return response()->json(['error' => 'Token não fornecido'], 401);
     }
+
+    $user = Auth::user();
+    if (!$user) {
+        return response()->json(['error' => 'Usuário não autenticado'], 401);
+    }
+
+    
+
+    return response()->json($user);
+}
+
+
 }

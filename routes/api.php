@@ -28,14 +28,15 @@ Route::get('/location/search', [LocationSearch::class, 'search']);
 
 Route::get('/locations/approved', [ReportController::class, 'getApprovedLocations']);
 Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
+Route::post('/reports', [ReportController::class, 'store']);
 
-// Rotas para o gerenciamento de notificações
+Route::get('/reports/{report}', [ReportController::class, 'show']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user-notifications', [NotificationController::class, 'getUserNotifications']);
     Route::post('/notifications/confirm/{id}', [NotificationController::class, 'confirmNotification']);
     Route::post('/notifications/delete/{id}', [NotificationController::class, 'deleteNotification']);
 });
-
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/user/upload-image', [AuthController::class, 'uploadImage']);

@@ -9,8 +9,8 @@ class Report extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type', 'description', 'location', 'status', 'latitude', 'longitude'];
-    
+    protected $fillable = [ 'user_id', 'type', 'description', 'location', 'status', 'latitude', 'longitude'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
