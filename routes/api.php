@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LocationSearch;
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,11 +28,10 @@ Route::get('/location/search', [LocationSearch::class, 'search']);
 
 Route::get('/locations/approved', [ReportController::class, 'getApprovedLocations']);
 Route::get('/reports/approved-locations', [ReportController::class, 'getApprovedLocations']);
-Route::post('/reports', [ReportController::class, 'store']);
-
-Route::get('/reports/{report}', [ReportController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/reports', [ReportController::class, 'index']);
+    Route::post('/reports', [ReportController::class, 'store']);
     Route::get('/user-notifications', [NotificationController::class, 'getUserNotifications']);
     Route::post('/notifications/confirm/{id}', [NotificationController::class, 'confirmNotification']);
     Route::post('/notifications/delete/{id}', [NotificationController::class, 'deleteNotification']);
