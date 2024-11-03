@@ -35,6 +35,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user-notifications', [NotificationController::class, 'getUserNotifications']);
     Route::post('/notifications/confirm/{id}', [NotificationController::class, 'confirmNotification']);
     Route::post('/notifications/delete/{id}', [NotificationController::class, 'deleteNotification']);
+    Route::post('/check-risk-area', [NotificationController::class, 'checkRiskArea']);
+    Route::post('/save-push-token', [NotificationController::class, 'savePushToken']);
+
 });
 
 Route::post('/login', [AuthController::class, 'login']);

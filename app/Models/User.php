@@ -26,6 +26,8 @@ class User extends Authenticatable
         'cidade',
         'estado',
         'type',
+        'push_token',
+        'expo_push_token',
     ];
 
     public function distanceTo($lat2, $lon2)
