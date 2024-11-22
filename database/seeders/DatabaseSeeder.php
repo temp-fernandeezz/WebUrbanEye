@@ -170,7 +170,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Post::updateOrCreate([
-            'user_id' => 1,
             'title' => 'Prevenção de Alagamentos: O Que Você Pode Fazer para Ajudar',
             'summary' => 'Saiba como prevenir alagamentos e proteger sua comunidade com essas dicas práticas e eficazes.',
             'content' => '**1. Mantenha a Drenagem Limpa**
